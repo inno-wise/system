@@ -1,4 +1,4 @@
-FROM python:3.9-slim  # You can use a specific version like 3.9 or 3.10
+FROM python:3.9-slim 
 
 # Install necessary build tools and distutils
 RUN apt-get update && apt-get install -y \
