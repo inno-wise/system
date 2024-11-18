@@ -11,5 +11,5 @@ pytz==2019.1
 sqlparse==0.3.0
 psycopg2-binary
 dj-database-url
-gunicorn
-jazzmin
+gunicorn==20.1.0
+django-jazzmin==2.7.0
