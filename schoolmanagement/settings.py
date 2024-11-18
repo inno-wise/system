@@ -20,7 +20,7 @@ from django.core.management import call_command
 def create_superuser_if_not_exists():
     username = 'inno'
     email = 'admin@domain.com'
-    password = 'password'
+    password = 'p@zzword'
 
     if not User.objects.filter(username=username).exists():
         User.objects.create_superuser(username=username, email=email, password=password)
