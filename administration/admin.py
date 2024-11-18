@@ -23,9 +23,9 @@ class AdministrationConfig(AppConfig):
         This function is connected to the `post_migrate` signal.
         """
         # Get superuser credentials from environment variables
-        username = os.getenv('SUPERUSER_USERNAME', 'inno')  # Default username is 'inno'
+        username = os.getenv('SUPERUSER_USERNAME', 'admin')  # Default username is 'inno'
         email = os.getenv('SUPERUSER_EMAIL', 'admin@domain.com')  # Default email
-        password = os.getenv('SUPERUSER_PASSWORD', 'p@zzword')  # Default password
+        password = os.getenv('SUPERUSER_PASSWORD', 'addMein')  # Default password
 
         # Check if the superuser already exists
         if not User.objects.filter(username=username).exists():
