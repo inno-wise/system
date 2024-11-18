@@ -1,8 +1,26 @@
 version: '3'
 services:
-    web:
-        build: .
-        ports:
-            - "8000:8000"
-        volumes:
-            - .:/app
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - DJANGO_SECRET_KEY='aw=%fl(=n$r@bci1ct$^wxnc-w#i_lr$jx_b9%(^6&j%^5l-v1'
+      - DATABASE_URL=postgresql://sms_own0_user:wyQNwt1GwAMw8RYrbydQQqdD4lZeYMDQ@dpg-csr3lc1u0jms738m9d90-a.oregon-postgres.render.com:5432/sms_own0
+    depends_on:
+      - db  # The web service depends on the db service
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: sms_own0
+      POSTGRES_PASSWORD: wyQNwt1GwAMw8RYrbydQQqdD4lZeYMDQ
+      POSTGRES_DB: sms_own0
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+
