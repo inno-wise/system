@@ -1,15 +1,17 @@
-FROM python:latest
+FROM python:3.9-slim  # You can use a specific version like 3.9 or 3.10
 
+# Install necessary build tools and distutils
 RUN apt-get update && apt-get install -y \
     python3-dev \
     build-essential \
+    python3-distutils \
     && rm -rf /var/lib/apt/lists/*  # Clean up to reduce image size
 
 WORKDIR /app
 
 # Install dependencies
 COPY requirements.txt /app/requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application
 COPY . /app
@@ -25,4 +27,3 @@ EXPOSE 8000
 
 # Use the entrypoint script
 ENTRYPOINT ["/entrypoint.sh"]
-
