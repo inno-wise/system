@@ -2,7 +2,7 @@
 # Project Name: School Management System Software
 
 ## How To Setup On Linux
-1. Clone This Project `git clone https://github.com/sajib1066/school_management_system.git`
+1. Clone This Project `git clone https://github.com/inno-wise/system.git`
 2. Go To Project Directory `cd school_management_system`
 3. Create a Virtual Environment `python -m venv venv`
 4. Activate Virtual Environment `source venv/bin/activate`
