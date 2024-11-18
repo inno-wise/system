@@ -13,6 +13,23 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 from .juzmin import JAZZMIN_SETTINGS
 import dj_database_url
+from django.contrib.auth.models import User
+from django.core.management import call_command
+
+
+def create_superuser_if_not_exists():
+    username = 'inno'
+    email = 'admin@domain.com'
+    password = 'password'
+
+    if not User.objects.filter(username=username).exists():
+        User.objects.create_superuser(username=username, email=email, password=password)
+        print(f'Superuser {username} created!')
+    else:
+        print(f'Superuser {username} already exists.')
+
+# Call the function to ensure a superuser is created if not present
+create_superuser_if_not_exists()
 
 # Get the SECRET_KEY from environment variables (or use a default)
 SECRET_KEY = os.getenv('SECRET_KEY', 'aw=%fl(=n$r@bci1ct$^wxnc-w#i_lr$jx_b9%(^6&j%^5l-v1')
