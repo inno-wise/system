@@ -9,14 +9,12 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
 import os
-from .juzmin import JAZZMIN_SETTINGS
 import dj_database_url
 from django.contrib.auth.models import User
-from django.core.management import call_command
+from .juzmin import JAZZMIN_SETTINGS
 
-
+# Function to create superuser if it does not exist
 def create_superuser_if_not_exists():
     username = 'inno'
     email = 'admin@domain.com'
@@ -28,8 +26,8 @@ def create_superuser_if_not_exists():
     else:
         print(f'Superuser {username} already exists.')
 
-# Call the function to ensure a superuser is created if not present
-create_superuser_if_not_exists()
+# Uncomment this line to automatically create the superuser when settings are loaded (not recommended in production)
+# create_superuser_if_not_exists()
 
 # Get the SECRET_KEY from environment variables (or use a default)
 SECRET_KEY = os.getenv('SECRET_KEY', 'aw=%fl(=n$r@bci1ct$^wxnc-w#i_lr$jx_b9%(^6&j%^5l-v1')
@@ -43,7 +41,7 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Database configuration
+# Database configuration using dj_database_url
 DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv('DATABASE_URL', 'sqlite:///db.sqlite3')
@@ -136,4 +134,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Jazzmin Settings
 JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
-
