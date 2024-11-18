@@ -1,5 +1,10 @@
 FROM python:latest
 
+RUN apt-get update && apt-get install -y \
+    python3-dev \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*  # Clean up to reduce image size
+
 WORKDIR /app
 
 # Install dependencies
